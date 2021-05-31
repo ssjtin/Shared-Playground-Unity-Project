@@ -1,7 +1,12 @@
 ﻿<Properties StartupConfiguration="{8FF2ACF0-355A-F061-24E2-BB5C9E6674A6}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/GameAssets.cs">
     <Files>
-      <File FileName="Assets/Script/PlayerController.cs" Line="41" Column="10" />
+      <File FileName="Assets/Script/PlayerController.cs" Line="50" Column="6" />
+      <File FileName="Assets/Script/EnemyController.cs" Line="52" Column="10" />
+      <File FileName="Assets/Script/EventHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/SingletonMonobehaviour.cs" Line="12" Column="10" />
+      <File FileName="Assets/Script/DamagePopup.cs" Line="11" Column="54" />
+      <File FileName="Assets/Script/GameAssets.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,10 +14,18 @@
           <Node name="Start" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Script" expanded="True">
-                <Node name="PlayerController.cs" selected="True" />
+                <Node name="GameAssets.cs" selected="True" />
               </Node>
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
