@@ -6,7 +6,9 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 {
     // ======= STATS ======== //
     [SerializeField]
+    private int maxHealth = 10;
     private int playerHealth = 10;
+    public HealthBar healthBar;
 
     // ========= MOVEMENT =================
     public float speed = 4;
@@ -21,8 +23,6 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
 
-    public GameObject damagePopup;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +34,8 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         animator = GetComponent<Animator>();
 
         sr = GetComponent<SpriteRenderer>();
+
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     private void OnEnable()
@@ -49,18 +51,18 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
     private void HandlePlayerHit(int damage)
     {
         //  Set player sprite to random color
-       sr.color = new Color(
-    Random.Range(0f, 1f), //Red
-    Random.Range(0f, 1f), //Green
-    Random.Range(0f, 1f), //Blue
-    1);
+        sr.color = new Color(
+     Random.Range(0f, 1f), //Red
+     Random.Range(0f, 1f), //Green
+     Random.Range(0f, 1f), //Blue
+     1);
 
         //  Decrease player health by damage amount
         playerHealth -= damage;
-        Debug.Log($"Remaining health = {playerHealth}");
+        healthBar.SetHealth(playerHealth);
 
         //  Show damage popup
-        DamagePopup.Create(transform.position + new Vector3(0, 0.5f), damage);
+        DamagePopup.Create(transform.position + new Vector3(0, 0.8f), damage);
 
     }
 
@@ -87,6 +89,12 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         animator.SetFloat("LookX", lookDirection.x);
         animator.SetFloat("LookY", lookDirection.y);
 
+        Vector3 position = transform.position;
+        position.y -= 0.8f;
+        healthBar.transform.position = position;
+
+        PlayerTestInput();
+
     }
 
     void FixedUpdate()
@@ -96,6 +104,19 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
         position = position + currentInput * speed * Time.deltaTime;
 
         rigidbody2d.MovePosition(position);
+    }
+
+    private void PlayerTestInput()
+    {
+        if (Input.GetKey(KeyCode.T))
+        {
+            TimeManager.Instance.TestAdvanceGameMinute();
+        }
+
+        if (Input.GetKey(KeyCode.G))
+        {
+            TimeManager.Instance.TestAdvanceGameDay();
+        }
     }
 
 }
