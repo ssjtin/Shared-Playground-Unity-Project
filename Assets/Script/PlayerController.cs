@@ -108,6 +108,12 @@ public class PlayerController : SingletonMonobehaviour<PlayerController>
 
     private void PlayerTestInput()
     {
+
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            SceneControllerManager.Instance.FadeAndLoadScene(SceneName.HouseInteriorScene.ToString(), rigidbody2d.position);
+        }
+
         if (Input.GetKey(KeyCode.T))
         {
             TimeManager.Instance.TestAdvanceGameMinute();

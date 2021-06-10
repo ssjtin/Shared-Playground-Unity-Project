@@ -5,3 +5,10 @@ public enum Season
     Winter,
     Spring
 }
+
+public enum SceneName
+{
+    Scene_Home_Town,
+    Scene_Mountains,
+    HouseInteriorScene
+}
